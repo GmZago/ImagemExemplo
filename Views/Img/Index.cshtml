@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Imagem.Models.Img>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoImg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagemTeste)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoImg)
+            </td>
+            <td>              
+                <img src="@Url.Content(item.testeExibicao)" />
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ImgId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ImgId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ImgId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
